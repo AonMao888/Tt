@@ -4,5 +4,11 @@
 "type":"ai",
 "photo":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/ChatGPT-Logo.svg/2048px-ChatGPT-Logo.svg.png",
 "link":"https://chatgpt.com"
+},
+{
+"name":"Hanzii",
+"type":"dictionary",
+"photo":"https://hanzii.net/assets/images/ic_hanzii1024x1024.png",
+"link":"https://hanzii.net"
 }
 ]
