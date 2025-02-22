@@ -2,7 +2,7 @@
 {
 "name":"Chat GPT",
 "type":"ai",
-"photo":"",
+"photo":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/ChatGPT-Logo.svg/2048px-ChatGPT-Logo.svg.png",
 "link":"https://chatgpt.com"
 }
 ]
