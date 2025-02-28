@@ -10,5 +10,11 @@
 "type":"dictionary",
 "photo":"https://hanzii.net/assets/images/ic_hanzii1024x1024.png",
 "link":"https://hanzii.net"
+},
+{
+"name":"Spin Wheel",
+"type":"tool",
+"photo":"https://o2k.netlify.app/static/media/spin.d40344b9e79f87ead405.png",
+"link":"https://aonmao888.github.io/Tt/spin.html"
 }
 ]
