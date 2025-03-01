@@ -28,5 +28,17 @@
 "type":"dictionary",
 "photo":"https://play-lh.googleusercontent.com/Ott0kQGOJsflSkcDbNUKchefm_la_rKCpdffYlW_G-NI_jIGs9s9UCag5M0WcjShQ-o",
 "link":"https://www.shandictionary.com/"
+},
+{
+"name":"you.com",
+"type":"ai",
+"photo":"https://play-lh.googleusercontent.com/QiocnvgPQ7NK1c8mEWzo6f3UhFjvq4-grZgkwz1XlMDnDKJz_84EW8gtdvd5XYw62LM",
+"link":"https://you.com/"
+},
+{
+"name":"Dictionary",
+"type":"dictionary",
+"photo":"https://play-lh.googleusercontent.com/8s1343yDw-k9vd_Dp9MGdH-ftCJ7Ne74xxzOMr2W4ic20btkV0VOODsHrlXVY4z7dQ",
+"link":"https://www.dictionary.com/"
 }
 ]
