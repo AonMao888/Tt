@@ -1,5 +1,11 @@
 [
 {
+"name":"Background Eraser",
+"type":"tool",
+"photo":"https://play-lh.googleusercontent.com/QQL2b-RHiSXtfv_cjq0j2gq5zTXc93xb8lsSHk_UCk9FI6SpYQ2RtjxthsgjD0pQijD1",
+"link":"https://www.remove.bg"
+},
+{
 "name":"Chat GPT",
 "type":"ai",
 "photo":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/ChatGPT-Logo.svg/2048px-ChatGPT-Logo.svg.png",
