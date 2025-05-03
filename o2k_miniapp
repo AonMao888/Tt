@@ -1,5 +1,11 @@
 [
 {
+"name":"Photopea",
+"type":"tool",
+"photo":"https://photopeapc.com/images/uploads/2021-10-13/Icon-blxfi.png",
+"link":"https://www.photopea.com"
+},
+{
 "name":"Background Eraser",
 "type":"tool",
 "photo":"https://play-lh.googleusercontent.com/QQL2b-RHiSXtfv_cjq0j2gq5zTXc93xb8lsSHk_UCk9FI6SpYQ2RtjxthsgjD0pQijD1",
