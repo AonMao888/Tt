@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O2K Time Table 2025</title>
+    <style>
+        body{
+            background: #eee;
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+        .title{
+            margin: 5px;
+            font-size: 29px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: #d917eb;
+            margin-top: 17px;
+            margin-left: 17px;
+        }
+        .view{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin: 9px 0;
+        }
+        .view h2{
+            margin: 5px;
+            margin-left: 15px;
+            color: #333;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 24px;
+        }
+        .view table{
+            background: #fff;
+            margin: 5px 9px;
+        }
+        .view .primary1 tr:nth-child(1){
+            background: #254d705a;
+            border-radius: 7px;
+            overflow: hidden;
+        }
+        .view .primary2 tr:nth-child(1){
+            background: #c562b05b;
+            border-radius: 7px;
+            overflow: hidden;
+        }
+        .view .secondary1 tr:nth-child(1){
+            background: #a7c1a85e;
+            border-radius: 7px;
+            overflow: hidden;
+        }
+        .view .secondary2a tr:nth-child(1){
+            background: #a0d68369;
+            border-radius: 7px;
+            overflow: hidden;
+        }
+        .view .secondary2b tr:nth-child(1){
+            background: #6a1e5557;
+            border-radius: 7px;
+            overflow: hidden;
+        }
+        .view .preged tr:nth-child(1){
+            background: #e6511f53;
+            border-radius: 7px;
+            overflow: hidden;
+        }
+        .view .ged tr:nth-child(1){
+            background: #f8c8946c;
+            border-radius: 7px;
+            overflow: hidden;
+        }
+        .view table th{
+            padding: 8px 0;
+            color: #333;
+            font-size: 19px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .view table td{
+            font-size: 17px;
+            text-align: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            padding: 9px 0;
+            white-space: nowrap;
+            color: #333;
+        }
+        .view .primary1 td:nth-child(1){
+            background: #b2d8ce75;
+        }
+        .view .primary1 td:nth-child(2){
+            background: #648db362;
+        }
+        .view .primary1 td:nth-child(3){
+            background: #254d705a;
+        }
+        .view .primary1 td:nth-child(4){
+            background: #5458ac55;
+        }
+        .view .primary1 td:nth-child(5){
+            background: #52357b58;
+        }
+        .view .primary2 td:nth-child(1){
+            background: #fec5f65e;
+        }
+        .view .primary2 td:nth-child(2){
+            background: #db8dd15f;
+        }
+        .view .primary2 td:nth-child(3){
+            background: #c562b05b;
+        }
+        .view .primary2 td:nth-child(4){
+            background: #b337925f;
+        }
+        .view .primary2 td:nth-child(5){
+            background: #c63a8258;
+        }
+        .view .secondary1 td:nth-child(1){
+            background: #EEEFE0;
+        }
+        .view .secondary1 td:nth-child(2){
+            background: #d1d8be6d;
+        }
+        .view .secondary1 td:nth-child(3){
+            background: #a7c1a85e;
+        }
+        .view .secondary1 td:nth-child(4){
+            background: #819a9150;
+        }
+        .view .secondary1 td:nth-child(5){
+            background: #75876551;
+        }
+        .view .secondary2a td:nth-child(1){
+            background: #dbee9868;
+        }
+        .view .secondary2a td:nth-child(2){
+            background: #d3ee9868;
+        }
+        .view .secondary2a td:nth-child(3){
+            background: #a0d68369;
+        }
+        .view .secondary2a td:nth-child(4){
+            background: #72bf7865;
+        }
+        .view .secondary2a td:nth-child(5){
+            background: #34792865;
+        }
+        .view .secondary2b td:nth-child(1){
+            background: #a64d7a58;
+        }
+        .view .secondary2b td:nth-child(2){
+            background: #6a1e5557;
+        }
+        .view .secondary2b td:nth-child(3){
+            background: #6a1e555e;
+        }
+        .view .secondary2b td:nth-child(4){
+            background: #511d435d;
+        }
+        .view .secondary2b td:nth-child(5){
+            background: #3006255d;
+        }
+        .view .preged td:nth-child(1){
+            background: #fbbb3a59;
+        }
+        .view .preged td:nth-child(2){
+            background: #fb9e3a59;
+        }
+        .view .preged td:nth-child(3){
+            background: #e6511f53;
+        }
+        .view .preged td:nth-child(4){
+            background: #ea301454;
+        }
+        .view .preged td:nth-child(5){
+            background: #93160e5d;
+        }
+        .view .ged td:nth-child(1){
+            background: #ffe0b550;
+        }
+        .view .ged td:nth-child(2){
+            background: #ffe0b57e;
+        }
+        .view .ged td:nth-child(3){
+            background: #f8c8946c;
+        }
+        .view .ged td:nth-child(4){
+            background: #d8ae7e63;
+        }
+        .view .ged td:nth-child(5){
+            background: #ffa6736c;
+        }
+        hr{
+            width: 95%;
+            height: 1px;
+            border: none;
+            background: rgba(128, 128, 128, 0.297);
+            margin: 12px 9px;
+        }
+        .nav{
+            display: flex;
+            justify-content: flex-start;
+            overflow-x: scroll;
+        }
+        .nav a{
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            padding: 5px 9px;
+            margin-left: 9px;
+            white-space: nowrap;
+        }
+        .nav::-webkit-scrollbar{
+            display: none;
+        }
+        .color{
+            display: flex;
+            flex-wrap: wrap;
+            width: 98%;
+            margin: 0 auto;
+        }
+        .color p{
+            margin: 3.5px;
+            font-size: 17px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            padding: 9px 15px;
+            border-radius: 5px;
+        }
+        @media(max-width:515px){
+            .title{font-size: 25px;}
+            .nav a{font-size: 15px;}
+            .view h2{font-size: 21px;}
+            .view table th{font-size: 15px;}
+            .view table td{font-size: 14px;padding: 6px 0;}
+            .color p{font-size: 14px;padding: 6px 14px;}
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">O2K Duty Table 2025</h1>
+    <div class="nav">
+        <a href="#primary1">Primary 1</a>
+        <a href="#primary2">Primary 2</a>
+        <a href="#secondary1">Secondary 1</a>
+        <a href="#secondary2a">Secondary 2(A)</a>
+        <a href="#secondary2b">Secondary 2(B)</a>
+        <a href="#preged">Pre GED</a>
+        <a href="#ged">GED</a>
+    </div>
+    <hr>
+    <div id="primary1" class="view">
+        <h2>Primary 1</h2>
+        <table class="primary1" cellspacing="3">
+            <tr>
+                <th>Monday</th>
+                <th>Tueday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+            <tr>
+                <td>Harrison</td>
+                <td>Alexa</td>
+                <td>Audrey</td>
+                <td>Selma</td>
+                <td>Andy</td>
+            </tr>
+            <tr>
+                <td>Oscar</td>
+                <td>Aria</td>
+                <td>Mary</td>
+                <td>Ashton</td>
+                <td>Bessi</td>
+            </tr>
+            <tr>
+                <td>Naomi</td>
+                <td>Reo</td>
+                <td>Owen</td>
+                <td>Luckie</td>
+                <td>Raymond</td>
+            </tr>
+            <tr>
+                <td>Oria</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div id="primary2" class="view">
+        <h2>Primary 2</h2>
+        <table class="primary2" cellspacing="3">
+            <tr>
+                <th>Monday</th>
+                <th>Tueday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div id="secondary1" class="view">
+        <h2>Secondary 1</h2>
+        <table class="secondary1" cellspacing="3">
+            <tr>
+                <th>Monday</th>
+                <th>Tueday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+            <tr>
+                <td>Liora</td>
+                <td>Blade</td>
+                <td>Elena</td>
+                <td>Isabella</td>
+                <td>Bruno</td>
+            </tr>
+            <tr>
+                <td>Lama</td>
+                <td>Nova</td>
+                <td>Hazel</td>
+                <td>Jisoo</td>
+                <td>Tommy</td>
+            </tr>
+            <tr>
+                <td>James</td>
+                <td>Ruby</td>
+                <td>Lilian</td>
+                <td>Natalia</td>
+                <td>Lunox</td>
+            </tr>
+            <tr>
+                <td>Evan</td>
+                <td>Anna</td>
+                <td>Daisy</td>
+                <td>Wendy</td>
+                <td>Dora</td>
+            </tr>
+            <tr>
+                <td>Haiden</td>
+                <td>Nuria</td>
+                <td>Scott</td>
+                <td>Tim</td>
+                <td>Stella</td>
+            </tr>
+            <tr>
+                <td>Daniel</td>
+                <td>Rose</td>
+                <td>Alan</td>
+                <td>Russell</td>
+                <td>Zuri</td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div id="secondary2a" class="view">
+        <h2>Secondary 2 (A)</h2>
+        <table class="secondary2a" cellspacing="3">
+            <tr>
+                <th>Monday</th>
+                <th>Tueday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+            <tr>
+                <td>Dustin</td>
+                <td>Randy Orton</td>
+                <td>Max</td>
+                <td>Jackson</td>
+                <td>Kai</td>
+            </tr>
+            <tr>
+                <td>Orion</td>
+                <td>Gavin</td>
+                <td>Aodi</td>
+                <td>Bryan</td>
+                <td>Steven</td>
+            </tr>
+            <tr>
+                <td>Olivia</td>
+                <td>Anna</td>
+                <td>Bella</td>
+                <td>Miles</td>
+                <td>Candra</td>
+            </tr>
+            <tr>
+                <td>Nora</td>
+                <td>Aria</td>
+                <td>Vivian</td>
+                <td>Maril</td>
+                <td>Julia</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Camilla</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div id="secondary2b" class="view">
+        <h2>Secondary 2 (B)</h2>
+        <table class="secondary2b" cellspacing="3">
+            <tr>
+                <th>Monday</th>
+                <th>Tueday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div id="preged" class="view">
+        <h2>Pre GED</h2>
+        <table class="preged" cellspacing="3">
+            <tr>
+                <th>Monday</th>
+                <th>Tueday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    <div id="ged" class="view">
+        <h2>GED</h2>
+        <table class="ged" cellspacing="3">
+            <tr>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+            <tr>
+                <td>Karina</td>
+                <td>Molly</td>
+                <td>Kisame</td>
+                <td>Catherine</td>
+                <td>Nolan</td>
+            </tr>
+            <tr>
+                <td>Jose</td>
+                <td>Jack</td>
+                <td>Susan</td>
+                <td>Yonksi</td>
+                <td>Kalina</td>
+            </tr>
+            <tr>
+                <td>Roze</td>
+                <td>Nang Thae Zin</td>
+                <td>Helen</td>
+                <td>Alvina</td>
+                <td>Sofia</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Cynthia</td>
+                <td>James</td>
+                <td>Stella</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+</body>
+</html>
