@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Braille Converter</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(blue,rgb(90, 0, 128));
+        }
+        .box{
+            background: #fff;
+            width: 96%;
+            max-width: 555px;
+            border-radius: 17px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .box h1{
+            margin: 3px;
+            font-size: 28px;
+            margin-top: 23px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: royalblue;
+        }
+        .box p{
+            margin: 3px 19px;
+            color: #333;
+            font-size: 17px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+        }
+        .inp{
+            display: flex;
+            align-items: center;
+            width: 91%;
+            margin: 17px 0;
+        }
+        .inp label{
+            color: #333;
+            font-size: 17px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-right: 9px;
+        }
+        .inp textarea{
+            flex: 1;
+            background: #fff;
+            outline: none;
+            border: 2px solid gray;
+            border-radius: 7px;
+            color: #333;
+            padding: 9px;
+            font-size: 18px;
+            letter-spacing: 1px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            min-height: 45px;
+            max-height: 99px;
+        }
+        .inp textarea:focus{
+            border-color: royalblue;
+        }
+        button{
+            background: royalblue;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 17px;
+            padding: 14px 0;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 51px;
+            width: 51%;
+        }
+        #brailleOutput {
+            font-size: 2.25rem; /* text-4xl */
+            line-height: 1.2; /* Adjust line height for better spacing of Braille characters */
+            letter-spacing: 0.1em; /* Add some spacing between Braille characters for readability */
+            word-break: break-all; /* Ensure long words wrap correctly */
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+        }
+        .out{
+            display: flex;
+            flex-direction: column;
+            width: 91%;
+            border: 1px solid gray;
+            border-radius: 7px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 9px;
+        }
+        .out label{
+            color: #333;
+            font-size: 17px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-bottom: 5px;
+            margin-left: 17px;
+            margin-top: 12px;
+        }
+        .out .output{
+            color: royalblue;
+            margin: 0 11px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Braille Converter</h1>
+        <p>Type English text below to convert it into Grade 1 Braille.</p>
+
+        <div class="inp">
+            <label for="inputText">Enter Text:</label>
+            <textarea
+                id="inputText"
+                placeholder="Type your message here..."
+                rows="5"
+            ></textarea>
+        </div>
+
+            <button id="convertButton">Convert to Braille</button>
+
+        <div class="out">
+            <label for="brailleOutput">Braille Output:</label>
+            <div
+                id="brailleOutput"
+                class="output"
+                aria-live="polite"
+            >
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputText = document.getElementById('inputText');
+            const convertButton = document.getElementById('convertButton');
+            const brailleOutput = document.getElementById('brailleOutput');
+
+            // Braille mapping for Grade 1 (uncontracted) English Braille.
+            // Each character maps to its corresponding Unicode Braille pattern.
+            const brailleMap = {
+                // Letters (lowercase)
+                'a': '⠁', 'b': '⠃', 'c': '⠉', 'd': '⠙', 'e': '⠑',
+                'f': '⠋', 'g': '⠛', 'h': '⠓', 'i': '⠊', 'j': '⠚',
+                'k': '⠅', 'l': '⠇', 'm': '⠍', 'n': '⠝', 'o': '⠕',
+                'p': '⠏', 'q': '⠟', 'r': '⠗', 's': '⠎', 't': '⠞',
+                'u': '⠥', 'v': '⠧', 'w': '⠺', 'x': '⠭', 'y': '⠽',
+                'z': '⠵',
+
+                // Numbers (prefixed with the number sign '⠼') - digits themselves use the same pattern as a-j
+                '1': '⠁', '2': '⠃', '3': '⠉', '4': '⠙', '5': '⠑',
+                '6': '⠋', '7': '⠛', '8': '⠓', '9': '⠊', '0': '⠚',
+
+                // Punctuation and special characters
+                '.': '⠲', // Period
+                ',': '⠂', // Comma
+                '?': '⠦', // Question mark
+                '!': '⠖', // Exclamation mark
+                "'": '⠄', // Apostrophe / Single Quote
+                '-': '⠤', // Hyphen / Dash
+                '(': '⠣', // Opening parenthesis
+                ')': ' Kaderparen ⠜', // Closing parenthesis
+                ':': '⠒', // Colon
+                ';': '⠆', // Semicolon
+                '"': '⠶', // Double quote (opening and closing, in Grade 1 often the same)
+                '/': '⠸⠌', // Slash
+
+                // Special Braille signs
+                'CAPITAL_SIGN': '⠠', // Used before a capital letter
+                'NUMBER_SIGN': '⠼',  // Used before a sequence of numbers
+                'SPACE_BRAILLE': '⠀' // Braille space character (empty cell)
+            };
+
+            // Function to convert text to Braille
+            function convertToBraille() {
+                const text = inputText.value;
+                let brailleText = '';
+                let inNumberSequence = false; // Track if we are currently in a sequence of numbers
+
+                for (let i = 0; i < text.length; i++) {
+                    const char = text[i];
+                    let brailleChar = '';
+
+                    // Handle newlines explicitly
+                    if (char === '\n') {
+                        brailleText += '\n';
+                        inNumberSequence = false; // Reset number sequence on newline
+                        continue;
+                    }
+
+                    // Handle spaces
+                    if (char === ' ') {
+                        brailleText += brailleMap['SPACE_BRAILLE'];
+                        inNumberSequence = false; // Reset number sequence on space
+                        continue;
+                    }
+
+                    // Check for numbers
+                    if (/\d/.test(char)) {
+                        if (!inNumberSequence) {
+                            brailleText += brailleMap['NUMBER_SIGN']; // Add number sign if starting a new number sequence
+                            inNumberSequence = true;
+                        }
+                        brailleChar = brailleMap[char];
+                    } else {
+                        inNumberSequence = false; // Not a number, so end any number sequence
+
+                        // Check for uppercase letters
+                        if (char >= 'A' && char <= 'Z') {
+                            brailleText += brailleMap['CAPITAL_SIGN']; // Add capital sign
+                            brailleChar = brailleMap[char.toLowerCase()];
+                        }
+                        // Check for lowercase letters or known punctuation
+                        else if (brailleMap[char]) {
+                            brailleChar = brailleMap[char];
+                        }
+                        // Handle characters not in map (e.g., symbols not in basic Braille, or unmapped special chars)
+                        else {
+                            brailleChar = brailleMap['SPACE_BRAILLE']; // Use Braille space for unknown characters
+                        }
+                    }
+
+                    brailleText += brailleChar;
+                }
+
+                brailleOutput.textContent = brailleText;
+            }
+
+            // Event listener for the convert button
+            convertButton.addEventListener('click', convertToBraille);
+
+            // Optional: Convert on input change for real-time feedback
+            inputText.addEventListener('input', convertToBraille);
+
+            // Initial conversion when the page loads with any default text
+            convertToBraille();
+        });
+    </script>
+</body>
+</html>
