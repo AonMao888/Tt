@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rail Fence Cipher Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        textarea,
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        input[type="number"] {
+            width: 100px; /* Adjust width for number input */
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 25px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        button.encrypt {
+            background-color: #28a745;
+            color: white;
+        }
+
+        button.encrypt:hover {
+            background-color: #218838;
+        }
+
+        button.decrypt {
+            background-color: #007bff;
+            color: white;
+        }
+
+        button.decrypt:hover {
+            background-color: #0056b3;
+        }
+
+        button.clear {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        button.clear:hover {
+            background-color: #5a6268;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            min-height: 50px;
+            word-wrap: break-word; /* Ensures long words wrap */
+            white-space: pre-wrap; /* Preserves whitespace and wraps */
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rail Fence Cipher Converter</h1>
+
+        <div class="form-group">
+            <label for="inputText">Input Text:</label>
+            <textarea id="inputText" rows="5" placeholder="Enter text to encrypt or decrypt..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="rails">Number of Rails:</label>
+            <input type="number" id="rails" value="3" min="2">
+        </div>
+
+        <div class="button-group">
+            <button class="encrypt" onclick="processText('encrypt')">Encrypt</button>
+            <button class="decrypt" onclick="processText('decrypt')">Decrypt</button>
+            <button class="clear" onclick="clearFields()">Clear</button>
+        </div>
+
+        <div class="form-group">
+            <label for="outputText">Output Text:</label>
+            <div id="outputText" class="result"></div>
+        </div>
+
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+
+    <script>
+        function encryptRailFence(text, rails) {
+            if (rails <= 1) return text;
+
+            const fence = Array.from({ length: rails }, () => []);
+            let rail = 0;
+            let direction = 1; // 1 for down, -1 for up
+
+            for (let i = 0; i < text.length; i++) {
+                fence[rail].push(text[i]);
+                if (rail === rails - 1) direction = -1;
+                else if (rail === 0) direction = 1;
+                rail += direction;
+            }
+
+            return fence.map(row => row.join('')).join('');
+        }
+
+        function decryptRailFence(ciphertext, rails) {
+            if (rails <= 1) return ciphertext;
+
+            const fence = Array.from({ length: rails }, () => []);
+            const len = ciphertext.length;
+            const positions = [];
+            let rail = 0;
+            let direction = 1;
+
+            for (let i = 0; i < len; i++) {
+                positions.push({ rail: rail, index: i });
+                if (rail === rails - 1) direction = -1;
+                else if (rail === 0) direction = 1;
+                rail += direction;
+            }
+
+            positions.sort((a, b) => {
+                if (a.rail !== b.rail) return a.rail - b.rail;
+                return a.index - b.index;
+            });
+
+            const decryptedChars = Array(len).fill('');
+            let cipherIndex = 0;
+            for (let i = 0; i < rails; i++) {
+                const charsInRail = positions.filter(p => p.rail === i).length;
+                for (let j = 0; j < charsInRail; j++) {
+                    // Place the character from ciphertext into its sorted position
+                    decryptedChars[positions[cipherIndex].index] = ciphertext[cipherIndex];
+                    cipherIndex++;
+                }
+            }
+
+            return decryptedChars.join('');
+        }
+
+
+        function processText(mode) {
+            const inputText = document.getElementById('inputText').value;
+            const rails = parseInt(document.getElementById('rails').value, 10);
+            const outputTextElement = document.getElementById('outputText');
+            const errorMessageElement = document.getElementById('errorMessage');
+
+            errorMessageElement.textContent = ''; // Clear previous errors
+
+            if (!inputText.trim()) {
+                errorMessageElement.textContent = 'Please enter text to process.';
+                outputTextElement.textContent = '';
+                return;
+            }
+
+            if (isNaN(rails) || rails < 2) {
+                errorMessageElement.textContent = 'Number of rails must be at least 2.';
+                outputTextElement.textContent = '';
+                return;
+            }
+
+            let result = '';
+            if (mode === 'encrypt') {
+                result = encryptRailFence(inputText, rails);
+            } else if (mode === 'decrypt') {
+                result = decryptRailFence(inputText, rails);
+            }
+            outputTextElement.textContent = result;
+        }
+
+        function clearFields() {
+            document.getElementById('inputText').value = '';
+            document.getElementById('rails').value = '3';
+            document.getElementById('outputText').textContent = '';
+            document.getElementById('errorMessage').textContent = '';
+        }
+    </script>
+</body>
+</html>
