@@ -600,5 +600,19 @@
         </table>
     </div>
     <hr>
+    <script>
+        let url = new URL(window.location.href);
+        let lang = url.searchParams.get('lang');
+        let title = document.querySelector('.title');
+        let monday = 'Monday';
+        if (lang) {
+            switch (lang){
+                case 'tai':
+                    title.textContent = 'လွၵ်းပုၼ်ႈၽွၼ်းတီႈ O2K 2025';
+                case 'myan':
+                    title.textContent = 'O2k 2025 တာဝန်ဇယား';
+            }
+        }
+    </script>
 </body>
 </html>
