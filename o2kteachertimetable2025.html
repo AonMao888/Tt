@@ -170,8 +170,8 @@
             padding: 9px 15px;
             border-radius: 5px;
         }
-        @media(max-width:515px){
-            .title{font-size: 25px;}
+        @media(max-width:575px){
+            .title{font-size: 21px;}
             .nav a{font-size: 15px;}
             .view h2{font-size: 21px;}
             .view table th{font-size: 15px;}
@@ -918,5 +918,21 @@
             <p class="lily">Tr. Lily</p>
         </div>
     </div>
+    <script>
+        let url = new URL(window.location.href);
+        let lang = url.searchParams.get('lang');
+        let title = document.querySelector('.title');
+
+        if (lang) {
+            switch (lang){
+                case 'tai':
+                    title.textContent = 'လွၵ်းၶၢဝ်းယၢမ်းတွၼ်ႈတႃႇမေႃသွၼ် O2K 2025';
+                    break;
+                case 'myan':
+                    title.textContent = 'O2k ဆရာများအတွက်အချိန်ဇယား 2025';
+                    break;
+            }
+        }
+    </script>
 </body>
 </html>

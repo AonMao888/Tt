@@ -604,13 +604,15 @@
         let url = new URL(window.location.href);
         let lang = url.searchParams.get('lang');
         let title = document.querySelector('.title');
-        let monday = 'Monday';
+
         if (lang) {
             switch (lang){
                 case 'tai':
                     title.textContent = 'လွၵ်းပုၼ်ႈၽွၼ်းတီႈ O2K 2025';
+                    break;
                 case 'myan':
                     title.textContent = 'O2k 2025 တာဝန်ဇယား';
+                    break;
             }
         }
     </script>

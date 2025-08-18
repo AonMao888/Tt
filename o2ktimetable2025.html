@@ -548,5 +548,21 @@
             <p class="social">Social Studies</p>
         </div>
     </div>
+    <script>
+        let url = new URL(window.location.href);
+        let lang = url.searchParams.get('lang');
+        let title = document.querySelector('.title');
+
+        if (lang) {
+            switch (lang){
+                case 'tai':
+                    title.textContent = 'လွၵ်းၶၢဝ်းယၢမ်း 2025';
+                    break;
+                case 'myan':
+                    title.textContent = 'အချိန်ဇယား 2025';
+                    break;
+            }
+        }
+    </script>
 </body>
 </html>
