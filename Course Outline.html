@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.min.css">
     <meta name="description" content="Course Outline for December">
     <style>
-        body{background: #fff;margin: 0;}
+        body{background: #fff;margin: 0;scroll-behavior: smooth;}
         nav{background: #eee;display: flex;align-items: center;justify-content: space-between;padding: 7px 0;position: sticky;top: 0;z-index: 5;}
         nav h1{margin: 5px;font-size: 21px;color: #333;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin-left: 15px;}
         nav .btn{display: flex;align-items: center;margin-right: 7px;}
         nav .btn a{text-decoration: none;font-size: 22px;padding: 4px;cursor: pointer;color: #333;margin: 0 5px;}
+        nav .btn .con{font-size: 14px;border: 2px solid #333;border-radius: 6px;padding: 5px 11px;}
         .o{margin: 11px;color: #9B302A;font-size: 15px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
         .title{margin: 2px 11px;color: #333;font-size: 19px;margin-top: 23px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
         .des{margin: 2px 11px;color: #333;font-size: 15px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
@@ -25,12 +26,21 @@
         ul{margin: 0;}
         li{margin: 1px;color: #333;font-size: 15px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
         hr{width: 96%;margin: 27px auto;border: none;border-top: 2px dashed gray;}
+        .main{display: flex;align-items: center;width: 98%;justify-content: center;flex-wrap: wrap;margin: 5px auto;}
+        .main .left{display: flex;flex-direction: column;min-width: 324px;}
+        .main img{width: 98%;object-fit: contain;object-position: center;user-select: none;border-radius: 4px;max-width: 639px;margin: 9px;}
+        .grid{display: grid;grid-template-columns: repeat(2,1fr);gap: 7px;margin-bottom: 19px;}
+        .grid .item{display: flex;align-items: center;border: 2px solid gray;border-radius: 9px;padding: 7px 0;text-decoration: none;}
+        .grid .item i{font-size: 24px;margin-left: 11px;color: #333;}
+        .grid .item h2{display: flex;flex-direction: column;margin: 0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 18px;margin: 0 9px;color: #333;}
+        .grid .item h2 span{font-weight: normal;color: #333;font-size: 14px;}
     </style>
 </head>
 <body>
     <nav>
         <h1>Course Outline</h1>
         <div class="btn">
+            <a class="con" href="#contact">ဆက်သွယ်ရန်</a>
             <a href="https://t.me/aonmao" target="_blank"><i class="ri-telegram-2-fill"></i></a>
             <a href="tel:09978946395"><i class="ri-phone-fill"></i></a>
         </div>
@@ -252,6 +262,42 @@
         <li>Laptop တစ်လုံးရှိရမည်</li>
         <li>နည်းပညာကိုအမှန်တကယ်စိတ်ဝင်စားသူဖြစ်ရမည်</li>
     </ul>
+    <div style="height: 24px;"></div>
+    <div id="contact">
+        <h1 class="title">သင်တန်းသို့ဆက်သွယ်ရန်</h1>
+        <div class="main">
+            <div class="left">
+                <h1 class="title">ဆက်သွယ်နိုင်သည့် Account များ</h1>
+                <div class="grid">
+                    <a href="tel:09662998989" class="item">
+                        <i class="ri-phone-fill"></i>
+                        <h2>Phone<span>09662998989,09978946395</span></h2>
+                    </a>
+                    <a href="mailto:aonmao8989@gmail.com" class="item">
+                        <i class="ri-phone-fill"></i>
+                        <h2>Email<span>aonmao8989@gmail.com</span></h2>
+                    </a>
+                    <a href="https://www.facebook.com/aonmao8989" class="item">
+                        <i class="ri-facebook-circle-fill"></i>
+                        <h2>Facebook<span>aonmao8989</span></h2>
+                    </a>
+                    <a href="https://www.m.me/aonmao8989" class="item">
+                        <i class="ri-messenger-fill"></i>
+                        <h2>Messenger<span>aonmao8989</span></h2>
+                    </a>
+                    <a href="https://t.me/aonmao" class="item">
+                        <i class="ri-telegram-fill"></i>
+                        <h2>Telegram<span>@aonmao</span></h2>
+                    </a>
+                    <a href="https://t.me/aonmao" class="item">
+                        <i class="ri-window-fill"></i>
+                        <h2>View more on<span>Aon Mao Portfolio</span></h2>
+                    </a>
+                </div>
+            </div>
+            <img src="https://raw.githubusercontent.com/AonMao888/Tt/refs/heads/main/IMG_7816.PNG" alt="">
+        </div>
+    </div>
     <div style="height: 36px;"></div>
 </body>
 </html>
