@@ -3,5 +3,10 @@
 "name":"Burger",
 "price":"15000",
 "photo":"https://www.lurch.de/media/b5/4c/70/1693989554/burger-classic-cheese-rezept.jpg?ts=1753774543",
+},
+{
+"name":"Sandwich",
+"price":"10000",
+"photo":"https://i.ebayimg.com/images/g/ozsAAOSw6mpmhnmm/s-l1200.jpg",
 }
 ]
