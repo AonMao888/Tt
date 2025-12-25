@@ -23,5 +23,10 @@
 "name":"Pizza",
 "price":"25000",
 "photo":"https://www.unileverfoodsolutions.co.id/dam/global-ufs/mcos/SEA/calcmenu/recipes/ID-recipes/sacks/Margherita-Pizza/Pizza%20Margaretha%20(Recipe%20Page).jpg",
+},
+{
+"name":"မုန့်ဟင်းခါး",
+"price":"5000",
+"photo":"https://images.deliveryhero.io/image/fd-mm/LH/o23f-listing.jpg",
 }
 ]
