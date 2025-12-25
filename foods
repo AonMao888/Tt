@@ -8,5 +8,10 @@
 "name":"Sandwich",
 "price":"10000",
 "photo":"https://i.ebayimg.com/images/g/ozsAAOSw6mpmhnmm/s-l1200.jpg",
+},
+{
+"name":"Coca Cola",
+"price":"2500",
+"photo":"https://cdn.auchan.fr/media/A0220030115000061913PRIMARY_2048x2048/B2CD/",
 }
 ]
